@@ -1,0 +1,43 @@
+ROOOOOOT
+10
+left 1
+root
+1
+min_child
+1
+left 3
+root
+3
+min_child
+3
+left 5
+root
+5
+min_child
+5
+left 7
+root
+7
+min_child
+7
+left 3
+root
+3
+min_child
+3
+left 9
+root
+9
+min_child
+9
+left 7
+root
+7
+min_child
+7
+left 3
+root
+3
+min_child
+3
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
