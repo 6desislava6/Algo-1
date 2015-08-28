@@ -36,7 +36,11 @@ Basically, if we have the hash result for a range [i;j] in the haystack,
 we can quickly calculate the hash for [i+1;j+1] as follows:
 
 ```
+<<<<<<< HEAD
 h(i+1,j+1) = (h(i,j) - value(i)*(BASE^(j-i))) * BASE + value(j)
+=======
+h(i+1,j+1) = (h(i,j) - value(i)*(BASE^(j-i))) * BASE + value(j+1)
+>>>>>>> upstream/master
 ```
 
 which makes computing the next hash a constant operation.

@@ -24,13 +24,22 @@ On separate lines, output the indices of occurrence of the needle.
 Input:
 
 ```
+<<<<<<< HEAD
 The quick brown fox jumps over the lazy dog. The dog was not amused.
+=======
+thequickbrownfoxjumpsoverthelazydogthedogwasnotamused
+>>>>>>> upstream/master
 dog
 ```
 
 Output:
 
 ```
+<<<<<<< HEAD
 40
 49
+=======
+32
+38
+>>>>>>> upstream/master
 ```
