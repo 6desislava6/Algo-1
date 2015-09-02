@@ -1,33 +1,40 @@
 class KPath:
 
-    def __init__(self, graph, start, end):
+    def __init__(self, graph, start, end, length):
         self.graph = graph
         self.start = start
         self.end = end
-        self.DFS(start)
+        self.length = length
+        print(self.count_paths(start, end, graph, length))
 
-    def DFS(self, start):
-        stack = [start]
-        discovered = []
-        levels = [None for x in range(len(self.graph))]
-        levels[start] = 0
-        while len(stack) > 0:
-            v = stack.pop(0)
-            level = levels[v]
-            print('v', v)
-            print('level', level)
-            if v not in discovered:
-                discovered.append(v)
-                print(discovered)
-                for next_vertex in self.graph[v]:
-                    if next_vertex not in discovered:
-                        levels[next_vertex] = level + 1
-                    stack.append(next_vertex)
-# DAYMN :D
+    def count_paths(self, start, end, graph, length):
+        verteces = len(graph)
+        # 3D table
+        # 1-st dimension is source
+        # 2-nd is destination
+        # 3-rd is count of edges between source and destination
+        table_counts = [[[0 for x in range(length + 1)] for i in range(verteces)] for j in range(verteces)]
+
+        for k in range(length + 1):
+            for i in range(verteces):
+                for j in range(verteces):
+                    table_counts[i][j][k] = 0
+                    if k == 0 and i == j:
+                        table_counts[i][j][k] = 1
+                    if k == 1 and j in graph[i]:
+                        table_counts[i][j][k] = 1
+                    if k > 1:
+                        for a in range(verteces):
+                            if a in graph[i]:
+                                table_counts[i][j][
+                                    k] += table_counts[a][j][k - 1]
+
+        return table_counts[start][end][length]
+
 
 def main():
-    graph = [[0, 1], [0, 2], [0, 3], [1, 3], [2, 3]]
-    k = KPath(graph, 0, 1)
+    graph = [[1, 2, 3], [3], [3], []]
+    k = KPath(graph, 0, 3, 2)
 
 if __name__ == '__main__':
     main()
